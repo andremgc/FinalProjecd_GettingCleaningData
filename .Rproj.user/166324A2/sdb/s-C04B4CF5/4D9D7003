@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "rm(list=ls())\n\nlibrary(dplyr)\nlibrary(tidyr)\n\n#creating table1\n\ntable1<-read.table(\".\\\\UCI HAR Dataset\\\\train\\\\X_train.txt\")\nlabel<-read.table(\".\\\\UCI HAR Dataset\\\\train\\\\y_train.txt\")\nsubject<-read.table(\".\\\\UCI HAR Dataset\\\\train\\\\subject_train.txt\")\ntable1<-data.frame(subject,label,table1)\n\n#creating table2\n\ntable2<-read.table(\".\\\\UCI HAR Dataset\\\\test\\\\X_test.txt\")\nlabel<-read.table(\".\\\\UCI HAR Dataset\\\\test\\\\y_test.txt\")\nsubject<-read.table(\".\\\\UCI HAR Dataset\\\\test\\\\subject_test.txt\")\ntable2<-data.frame(subject,label,table2)\n\n##1 Merging the dataframes and creating a dataframe with all observations\n\ndf<-full_join(table1,table2)\n\n## getting the feature names\nfeature<-read.table(\".\\\\UCI HAR Dataset\\\\features.txt\")\n\n#as there are features with the same name, the names used here is the combination of the\n#feature name and its number.\nfeature<-unite(feature,'feature',V1,V2)[[1]] \n\n##2 Selecting only mean and std features\ndf<-df[,c(1:2,(grep(\"mean|std\",feature)+2))] #+2 because the first column has the label and subject\n\n##4 Chosing right names to the variables\nnames(df)<-c(\"subject\",\"label\",grep(\"mean|std\",feature,value=TRUE))\n\n##3 Using descriptive names for the activities\ndf$label<-as.factor(df$label)\nlevels(df$label)<-c(\"Walking\",\n                    \"Walking_Upstairs\",\n                    \"Walking_Downstairs\",\n                    \"Sitting\",\n                    \"Standing\",\n                    \"Laying\")\n\ndf<-rename(df,activity=label)\n\n\n##5 creating a tidy df with the means of each feature for each subject\ndf.tidy<-df%>%\n  group_by(subject,activity)%>%\n  summarise_all(mean)\n\nwrite.csv(df.tidy,\"Tidy_DataFrame.csv\",row.names = F)\n\n",
+    "created" : 1521566147016.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1458327751",
+    "id" : "4D9D7003",
+    "lastKnownWriteTime" : 1521571374,
+    "last_content_update" : 1521571374572,
+    "path" : "C:/Users/andre/Dropbox/Coursera/CleaningData/FinalProject/main.R",
+    "project_path" : "main.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

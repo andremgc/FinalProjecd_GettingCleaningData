@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"CodeBook\"\nauthor: \"Andre Costa\"\ndate: \"March, 20, 2018\"\noutput: html_document\n---\n\n\n## Introduction\n\nThis is the code book for the Getting and Cleaning Data Course Project. It contains the description of the final data, which is stored in the Tidy_DataFrame.csv file. The data was got by filtering, summarizing and handling with the data available at http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones.\n\n## Variables Descriprion\n\nThe data in this file is a tidy data composed of the following variables\n\n+ **subject:** informs the number of the person in which the data was measured.\n+ **activity:** informs the activity in which the data was collected.\n+ 79 Variables containing the mean of a measured variable for a subject and activity. The names used for then was the names from the original database, with a number prefix, which show what was the variable position in the original database. The name in the original database is described as following:\n\n_The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz._ \n\n_Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag)._ \n\n_Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals)._\n\n_These signals were used to estimate variables of the feature vector for each pattern:  _\n\n_'-XYZ\\' is used to denote 3-axial signals in the X, Y and Z directions._\n\n+ _tBodyAcc-XYZ_\n+ _tGravityAcc-XYZ_\n+ _tBodyAccJerk-XYZ_\n+ _tBodyGyro-XYZ_\n+ _tBodyGyroJerk-XYZ_\n+ _tBodyAccMag_\n+ _tGravityAccMag_\n+ _tBodyAccJerkMag_\n+ _tBodyGyroMag_\n+ _tBodyGyroJerkMag_\n+ _fBodyAcc-XYZ_\n+ _fBodyAccJerk-XYZ_\n+ _fBodyGyro-XYZ_\n+ _fBodyAccMag_\n+ _fBodyAccJerkMag_\n+ _fBodyGyroMag_\n+ _fBodyGyroJerkMag_\n\n_The set of variables that were estimated from these signals are: _\n\n_mean(): Mean value_\n_std(): Standard deviation_\n\nThe document of the original dataset contains other variables estimated from the signals but they were not used here. Units for each variable were not provided\n\n## Data preparation\n\nThe data used here was obtained by first loading the datasets from the training and testing groups of the dataset. Then, it was selected just the variables whith mean() or std() on its name. After having renamed the variables, a new data frame was created using the functions _group\\_by_ and _sumarise\\_all_ from the **dplyr** package to get the means of each variable, for each group of activity and person.\n",
+    "created" : 1521571404714.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3463986961",
+    "id" : "9579E3D7",
+    "lastKnownWriteTime" : 1521575774,
+    "last_content_update" : 1521575774853,
+    "path" : "C:/Users/andre/Dropbox/Coursera/CleaningData/FinalProject/CodeBook.md",
+    "project_path" : "CodeBook.md",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}
